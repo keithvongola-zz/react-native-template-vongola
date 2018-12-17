@@ -12,7 +12,7 @@ function installDevDependencies() {
     const depVersion = devDependencies[depName];
     const depToInstall = depName + '@' + depVersion;
     console.log('Adding ' + depToInstall + '...');
-    execSync(`npm i -s ${depToInstall}`, {stdio: 'inherit'});
+    execSync(`npm i --save-dev ${depToInstall}`, {stdio: 'inherit'});
   }
 }
 
