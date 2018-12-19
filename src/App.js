@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import HomePage from './pages/Home';
+import LaunchGate from './LaunchGate';
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <HomePage />
+        <LaunchGate>
+          <HomePage />
+        </LaunchGate>
       </View>
     );
   }
