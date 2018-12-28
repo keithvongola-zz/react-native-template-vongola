@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { SplashScreen } from './components';
+import { connect } from 'react-redux';
+import * as SettingsActions from '../actions/settings';
+import { SplashScreen } from '.';
 
 /**
  * A gate component to show splash screen on application launch (gate closed).
@@ -15,6 +17,8 @@ class LaunchGate extends PureComponent {
     }
 
     componentDidMount() {
+      const { getVersionInfo } = this.props;
+      getVersionInfo();
       this._timer = setTimeout(() => {
         this.setState({ pass: true });
         clearTimeout(this._timer);
@@ -40,6 +44,12 @@ LaunchGate.propTypes = {
     * Component to be rendered when gate is open.
     */
   children: PropTypes.element.isRequired,
+
+  getVersionInfo: PropTypes.func.isRequired,
 };
 
-export default LaunchGate;
+const mapDispatchToProps = dispatch => ({
+  getVersionInfo: () => dispatch(SettingsActions.getVersionInfo()),
+});
+
+export default connect(null, mapDispatchToProps)(LaunchGate);

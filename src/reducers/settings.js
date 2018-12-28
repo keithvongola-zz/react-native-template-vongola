@@ -1,10 +1,6 @@
 import { fromJS } from 'immutable';
-import { createReducer } from '../helpers';
 import {
-  UPDATE_LANG,
-  GET_VERSION_INFO,
-  GET_VERSION_INFO_SUCCESS,
-  GET_VERSION_INFO_FAIL,
+  UPDATE_SETTINGS,
 } from '../actions/settings';
 
 const initialState = fromJS({
@@ -14,9 +10,10 @@ const initialState = fromJS({
 });
 
 const actionsMap = {
-  [UPDATE_LANG]: (state, action) => state.set('lang', action.lang),
-  [GET_VERSION_INFO_SUCCESS]: (state, { settings }) => state.mergeDeep(settings),
-  [GET_VERSION_INFO_FAIL]: state => state.mergeDeep({ isLatest: true }),
+  [UPDATE_SETTINGS]: (state, { settings }) => state.mergeDeep(settings),
 };
 
-export default createReducer(initialState, actionsMap);
+export default (state = initialState, action = {}) => {
+  const fn = actionsMap[action.type];
+  return fn ? fn(state, action) : state;
+};

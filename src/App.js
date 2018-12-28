@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
-import HomePage from './pages/Home';
-import LaunchGate from './LaunchGate';
+import { Provider } from 'react-redux';
+import { withNamespaces } from 'react-i18next';
+import { LaunchGate } from './components';
+import RootNav from './navigators';
+import store from './store';
+import './locales/i18n';
+
+const WrappedRootNavigator = ({ t }) => <RootNav screenProps={{ t }} />;
+
+const ReloadAppOnLanguageChange = withNamespaces()(WrappedRootNavigator);
 
 export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <Provider store={store}>
         <LaunchGate>
-          <HomePage />
+          <ReloadAppOnLanguageChange />
         </LaunchGate>
-      </View>
+      </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

@@ -2,10 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { fonts, colors } from '../styles';
 
-export default () => (
+export default ({ screenProps: { t } }) => (
   <View style={styles.container}>
     <Text style={styles.text}>
-        Home Page
+      {t('home:home__title')}
     </Text>
   </View>
 );
