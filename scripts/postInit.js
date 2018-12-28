@@ -23,9 +23,9 @@ function cleanup() {
     path.resolve('scripts/postInit.js')
   ];
   
-  fileToDelete.forEach(path => {
-    fs.unlink(path);
-  })
+  fileToDelete.forEach(filePath => {
+    fs.unlink(filePath);
+  });
 
   const scriptsPath = path.resolve('scripts');
   fs.rmdir(scriptsPath);
