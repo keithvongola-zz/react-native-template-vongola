@@ -17,8 +17,18 @@ function installDevDependencies() {
 }
 
 function cleanup() {
-  const devDependenciesJsonPath = path.resolve('devDependencies.json');
-  fs.unlink(devDependenciesJsonPath);
+  const fileToDelete = [
+    path.resolve('devDependencies.json'),
+    path.resolve('App.js'),
+    path.resolve('scripts/postInit.js')
+  ];
+  
+  fileToDelete.forEach(path => {
+    fs.unlink(path);
+  })
+
+  const scriptsPath = path.resolve('scripts');
+  fs.rmdir(scriptsPath);
 }
 
 function postTemplateInit() {
