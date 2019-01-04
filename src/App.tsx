@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Component } from 'react';
+import { TransProps, withNamespaces } from 'react-i18next';
 import { Provider } from 'react-redux';
-import { withNamespaces } from 'react-i18next';
 import { LaunchGate } from './components';
+import './locales/i18n';
 import RootNav from './navigators';
 import store from './store';
-import './locales/i18n';
 
-const WrappedRootNavigator = ({ t }) => <RootNav screenProps={{ t }} />;
+const WrappedRootNavigator = ({ t }: { t : TransProps['t'] }) => <RootNav screenProps={{ t }} />;
 
 const ReloadAppOnLanguageChange = withNamespaces()(WrappedRootNavigator);
 
 export default class App extends Component {
-  render() {
+  public render() {
     return (
       <Provider store={store}>
         <LaunchGate>

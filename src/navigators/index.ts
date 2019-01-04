@@ -7,7 +7,7 @@ import HomePage from '../pages/Home';
 const routeConfigs = {
   Home: {
     screen: HomePage,
-    navigationOptions: ({ screenProps: { t } }) => ({
+    navigationOptions: ({ screenProps: { t } }: any) => ({
       title: t('home:home__title'),
     }),
   },

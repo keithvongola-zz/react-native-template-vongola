@@ -1,7 +1,6 @@
 {
     "i18next": "^13.0.1",
     "immutable": "4.0.0-rc.12",
-    "prop-types": "15.6.2",
     "react-i18next": "^8.4.0",
     "react-native-gesture-handler": "^1.0.12",
     "react-navigation": "3.0.9",

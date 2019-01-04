@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { fonts, colors } from '../styles';
+import { StyleSheet, Text, View } from 'react-native';
+import { colors, fonts } from '../styles';
 
-export default () => (
+export default ({ screenProps: { t } }: any) => (
   <View style={styles.container}>
     <Text style={styles.text}>
-        Splash Screen
+      {t('home:home__title')}
     </Text>
   </View>
 );
@@ -15,11 +15,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.white,
+    backgroundColor: 'blue',
   },
   text: {
     fontSize: fonts.big,
     fontWeight: fonts.bold,
-    color: colors.primary,
+    color: colors.white,
   },
 });
