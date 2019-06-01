@@ -1,27 +1,28 @@
-import { fromJS } from 'immutable';
 import { ActionType } from 'typesafe-actions';
-import * as SettingsAction from '../actions/settings';
+import * as Actions from './actions';
 
 interface IState {
-  lang?: string;
-  versionInfo?: {};
-  isLatest?: boolean;
-  mergeDeep: any;
+	lang?: string;
+	versionInfo: {} | null;
+	isLatest: boolean | null;
 }
 
-type SettingsAction = ActionType<typeof SettingsAction>;
+type Actions = ActionType<typeof Actions>;
 
-const initialState: IState = fromJS({
-  lang: 'zh',
-  versionInfo: null,
-  isLatest: null,
-});
+const initialState: IState = {
+	lang: 'zh',
+	versionInfo: null,
+	isLatest: null,
+};
 
-export default (state: IState = initialState, action: SettingsAction) => {
-  switch (action.type) {
-    case SettingsAction.UPDATE_SETTINGS:
-      return state.mergeDeep(action.payload);
-    default:
-      return state;
-  }
+export default (state: IState = initialState, action: Actions) => {
+	switch (action.type) {
+		case Actions.GET_VERSION_INFO_SUCCESS:
+			return {
+				...state,
+				...action.payload,
+			};
+		default:
+			return state;
+	}
 };

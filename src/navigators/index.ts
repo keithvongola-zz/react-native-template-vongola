@@ -1,13 +1,15 @@
 import {
-  createAppContainer,
-  createSwitchNavigator,
+	createAppContainer,
+	createSwitchNavigator,
 } from 'react-navigation';
+import { Login } from '../features/auth';
 import { SplashScreen } from '../features/splash';
 
 const AppNavigator = createSwitchNavigator({
-  Splash: SplashScreen,
+	Splash: SplashScreen,
+	Login,
 }, {
-  initialRouteName: 'Home',
+	initialRouteName: 'Splash',
 });
 
 export default createAppContainer(AppNavigator);

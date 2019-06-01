@@ -12,21 +12,21 @@ const languageDetector = {
 };
 
 i18n
-  .use(languageDetector)
-  .use(initReactI18next)
-  .init({
-    fallbackLng: 'en',
-    debug: true,
-    resources: {
-      en,
-      zh,
-    },
-    react: {
-      wait: false,
-      bindI18n: 'languageChanged loaded',
-      bindStore: 'added removed',
-      nsMode: 'default',
-    },
-  });
+	.use(languageDetector)
+	.use(initReactI18next)
+	.init({
+		fallbackLng: 'en',
+		debug: true,
+		resources: {
+			en,
+			zh,
+		},
+		react: {
+			wait: false,
+			bindI18n: 'languageChanged loaded',
+			bindStore: 'added removed',
+			nsMode: 'default',
+		},
+	});
 
 export default i18n;
