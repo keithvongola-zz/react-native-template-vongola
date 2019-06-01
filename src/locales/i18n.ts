@@ -1,10 +1,19 @@
 import i18n from 'i18next';
-import { reactI18nextModule } from 'react-i18next';
+import { initReactI18next } from 'react-i18next';
 import en from './en.json';
 import zh from './zh.json';
 
+const languageDetector = {
+	type: 'languageDetector',
+	async: true,
+	detect: (cb: any) => cb('en'),
+	init: () => {},
+	cacheUserLanguage: () => {},
+};
+
 i18n
-  .use(reactI18nextModule)
+  .use(languageDetector)
+  .use(initReactI18next)
   .init({
     fallbackLng: 'en',
     debug: true,

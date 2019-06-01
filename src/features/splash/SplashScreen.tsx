@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native';
-import { colors, fonts } from '../styles';
+import { StyleSheet, Text, View } from 'react-native';
+import { colors, fonts } from '../../styles';
 
 export default () => (
   <View style={styles.container}>
@@ -10,12 +10,7 @@ export default () => (
   </View>
 );
 
-interface IStyles {
-  container: ViewStyle;
-  text: TextStyle;
-}
-
-const styles = StyleSheet.create<IStyles>({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
